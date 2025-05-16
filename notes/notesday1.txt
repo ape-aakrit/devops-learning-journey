@@ -1,0 +1,366 @@
+✅ Git Commands & Concepts - Revision Notes
+
+🔹 Basic Git Commands
+git status → Shows current branch and tracked/untracked files.
+
+
+git add <file> → Stages specific file.
+
+
+git add . → Stages all modified and new files.
+
+
+git commit -m "message" → Commits staged changes with a message.
+
+
+git log → Shows commit history.
+
+
+git reset <file> → Unstages a file from staging area.
+
+
+git restore <file> → Discards changes in working directory.
+
+
+git restore --staged <file> → Removes a file from staging area, but keeps changes.
+
+
+git stash → Temporarily saves uncommitted changes.
+
+
+git stash pop → Applies and removes the last stash.
+
+
+
+🔹 Forking and Cloning
+Fork: Copy a repo to your GitHub profile.
+ git clone https://github.com/your-username/forked-repo.git
+
+
+
+🔹 Remote Repositories
+
+
+
+git clone <url> → Clone the forked repo locally.
+
+
+Example:git remote -v → Lists remotes.
+
+
+git remote add origin <your-fork-url> → Adds your fork as origin.
+
+
+git remote add upstream <original-repo-url> → Adds main repo as upstream.
+
+
+git fetch upstream → Fetches changes from upstream repo.
+
+
+git pull upstream main → Merges upstream’s main into your local main.
+
+
+
+🔹 Branching
+git branch → Lists all local branches.
+
+
+git branch <branch-name> → Creates a new branch.
+
+
+git checkout <branch-name> → Switches to that branch.
+
+
+git checkout -b <branch-name> → Creates and switches to new branch.
+
+
+git push origin <branch-name> → Pushes local branch to your fork.
+
+
+
+🔹 Keeping Your Fork Up-to-Date
+bash
+CopyEdit
+git checkout main
+git fetch upstream
+git merge upstream/main
+git push origin main
+
+
+🔹 Creating a Pull Request (PR)
+Fork the original repo.
+
+
+Clone your fork locally.
+
+
+Create a branch:
+ git checkout -b feature-xyz
+
+
+Make changes → git add . → git commit -m "your message"
+
+
+Push branch to your fork:
+ git push origin feature-xyz
+
+
+Go to GitHub → Open Pull Request:
+
+
+Base repo: upstream
+
+
+Base branch: main
+
+
+Compare: your fork’s feature-xyz
+
+
+Click Create Pull Request
+
+
+
+🔹 Upstream & Rebase
+git fetch upstream → Grabs latest changes.
+
+
+git rebase upstream/main → Re-applies your local commits on top of upstream’s main.
+
+
+Useful to clean history before PR.
+
+
+
+🔹 Conflict at Same Line
+Occurs when both upstream and your branch modify the same line.
+ To resolve:
+Git will mark conflict in file using:
+
+ markdown
+CopyEdit
+<<<<<<< HEAD
+Your changes
+=======
+Upstream changes
+>>>>>>> upstream/main
+
+
+Manually choose which version to keep.
+
+
+Stage it again: git add <file>
+
+
+Continue: git rebase --continue or git commit
+
+
+
+Linux basics 
+📁 Linux Commands & Terminal Notes
+🖥️ Basics
+Terminal Emulator: Interface to access shell (like gnome-terminal, xterm, zsh, etc.).
+
+
+Shell: A command-line interpreter; popular shells are Bash, Zsh, Fish.
+
+
+Bash Files: ~/.bashrc, ~/.bash_profile – scripts executed at shell startup.
+
+
+zprofile: Similar to .bash_profile, but used with Zsh.
+
+
+📂 Environment Variables
+View: printenv, echo $VAR_NAME
+
+
+Path Variable: echo $PATH
+
+
+Set temporarily: export VAR=value
+
+
+Permanent storage: Add to .bashrc or .zshrc
+
+
+Where stored: Typically in ~/.bashrc, ~/.profile, or /etc/environment
+
+
+
+📁 Navigation & File Management
+📄 Directory Navigation
+pwd – Print working directory
+
+
+cd – Change directory
+
+
+cd .. – Move to parent directory
+
+
+cd ~ – Move to home directory
+
+
+ls – List contents
+
+
+ls -R – Recursive list
+
+
+📄 File/Directory Commands
+mkdir – Create directory
+
+
+touch – Create empty file
+
+
+cat file.txt – View file content
+
+
+man command – Show manual
+
+
+tr 'a-z' 'A-Z' – Translate characters (e.g., lowercase to uppercase)
+
+
+📁 File Manipulation
+cp file1 file2 – Copy file
+
+
+cp -R dir1 dir2 – Copy directory recursively
+
+
+mv file1 file2 – Rename or move
+
+
+rm file – Delete file
+
+
+rm -r folder – Delete directory
+
+
+
+🔐 File Permissions
+ls -l – View permissions
+
+
+chmod 755 file – Change permissions
+
+
+chown user:group file – Change file owner
+
+
+⛓️ Operators & Bulk Actions
+*, ?, [] – Wildcards
+
+
+Example: cp *.txt backup/
+
+
+
+🕵️ Searching & Filtering
+grep 'text' file.txt – Search text
+
+
+history – Show past commands
+
+
+locate filename – Fast file search
+
+
+find / -name file.txt – Search manually
+
+
+diff file1 file2 – Compare files
+
+
+head -n 10 file.txt – First 10 lines
+
+
+tail -n 10 file.txt – Last 10 lines
+
+
+
+⚙️ System Info & Utilities
+df -h – Disk usage
+
+
+top / htop – System monitor
+
+
+uname -a – Kernel info
+
+
+free -h – RAM usage
+
+
+vmstat – Memory & process stats
+
+
+id – Current user ID
+
+
+getent passwd – List all users
+
+
+lsof – List open files
+
+
+🧠 User Management
+useradd username – Add user
+
+
+userdel username – Delete user
+
+
+
+🌐 Networking
+nslookup domain.com – DNS info
+
+
+netstat -tuln – Network connections
+
+
+hostname – Display system hostname
+
+
+
+🛠️ Miscellaneous
+wget URL – Download file
+
+
+zip file.zip file1 file2 – Zip files
+
+
+unzip file.zip – Extract files
+
+
+alias ll='ls -alF' – Create shortcuts
+
+
+ps aux – Running processes
+
+
+sed, cut – Stream editing
+
+
+regex – Powerful pattern matching (used in grep, sed, etc.)
+
+
+
+⌨️ Terminal Shortcuts
+Ctrl + A – Go to start of line
+
+
+Ctrl + E – Go to end of line
+
+
+Ctrl + C – Cancel command
+
+
+Ctrl + D – Logout or close terminal
+
+
+Ctrl + R – Search command history
+
