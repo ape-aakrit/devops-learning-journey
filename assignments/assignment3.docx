@@ -1,6 +1,7 @@
 ﻿      
       Assignment 3
-      TASK 1 
+      
+TASK 1 
     1. Start on main, pull latest changes.
     2. Create a new branch feature-test.
     3. Make a simple change (like editing README.md).
@@ -11,16 +12,28 @@
     8. Resolve any conflicts if they arise.
     9. Push rebased feature-test (force push if needed).
     10. Merge the PR on GitHub.
-       TASK2
+Learnings Summary
+    • Created and cloned a GitHub repo with a README file.
+    • Worked with branches: created feature-test branch from main.
+    • Made changes in different branches and committed them.
+    • Opened a Pull Request (PR) from feature-test to main.
+    • Made concurrent changes on main while PR was open.
+    • Learned how to rebase a feature branch on updated main.
+    • Resolved merge conflicts manually during rebase.
+    • Used git add and git rebase --continue to complete the rebase process.
+    • Pushed changes and handled force push when rewriting branch history.
+    • Dealt with remote branch conflicts and learned to pull before pushing to avoid rejections.
 
-    • Initialize a new Git repository named git-rebase-practice.
-    • Create a file main.txt, add content, and make an initial commit on the main branch.
-    • Create a new branch called feature-rebase from main.
-    • On feature-rebase, make two separate commits modifying or adding feature.txt.
-    • Switch back to the main branch and make one more commit modifying main.txt.
-    • Rebase the feature-rebase branch onto the updated main branch.
-    • If there's a conflict during the rebase, resolve it, then continue the rebase.
-    • After a successful rebase, merge the feature-rebase branch into main.
-    • Use git log --oneline --graph --all to observe your branch history after rebasing.
-    • (Optional) Use git reflog to explore the state of the HEAD and recover history if needed.
-      
+       
+TASK2
+
+    1. • Initialize a new Git repository named git-rebase-practice.
+    2. • Create a file main.txt, add content, and make an initial commit on the main branch.
+    3. • Create a new branch called feature-rebase from main.
+    4. • On feature-rebase, make two separate commits modifying or adding feature.txt.
+    5. • Switch back to the main branch and make one more commit modifying main.txt.
+    6. • Rebase the feature-rebase branch onto the updated main branch.
+    7. • If there's a conflict during the rebase, resolve it, then continue the rebase.
+    8. • After a successful rebase, merge the feature-rebase branch into main.
+    9. • Use git log --oneline --graph --all to observe your branch history after rebasing.
+    10. • (Optional) Use git reflog to explore the state of the HEAD and recover history if needed.

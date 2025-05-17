@@ -1,0 +1,82 @@
+﻿Docker notes 
+
+date-17/05/25
+Part 1
+
+
+Part 2
+🔹 1. Namespaces – Isolation (Who you are & what you can see)
+What it does:
+Namespaces isolate what a process can see — its view of the system (processes, files, network, etc.). Each container gets its own isolated namespace.
+Types of namespaces:
+    • pid: Process IDs
+    • mnt: Mount points (file systems)
+    • net: Network interfaces
+    • ipc: Interprocess communication
+    • uts: Hostname
+    • user: User and group IDs
+Real-life analogy:
+Imagine you are in a hotel room. You have:
+    • Your own bathroom (no access to others’),
+    • Your own keycard (only opens your room),
+    • Your own Wi-Fi password,
+    • Your own mini fridge and TV,
+Even though hundreds of guests are in the hotel (host machine), you only see and access your room (container’s namespace).
+In Docker:
+Each container has its own process tree, network stack, and file mounts — like being in its own little world.
+
+🔹 2. Control Groups (cgroups) – Resource Management (How much you get)
+What it does:
+Cgroups limit and isolate the resources (CPU, RAM, disk I/O, etc.) that a process can use.
+Example capabilities:
+    • Limit memory to 256MB per container
+    • Restrict CPU usage to 1 core
+    • Prevent one container from hogging all I/O
+Real-life analogy:
+Imagine a shared workspace with freelancers:
+    • Each desk has its own power outlet, internet speed cap, and chair.
+    • No matter how demanding one freelancer is, they can’t take over all the electricity or bandwidth.
+Cgroups ensure fair usage, so no one user crashes the whole building (host system).
+In Docker:
+You can specify how much CPU/memory a container gets, and the OS ensures it cannot exceed that limit.
+
+🔹 3. Union File System (UFS) – Layered Filesystems (Efficient storage & versioning)
+What it does:
+UnionFS allows containers to have multiple layered file systems that appear as one. Docker images are made of layers (read-only), and containers add a top writable layer.
+How it works:
+    • Base OS → Read-only layer
+    • App dependencies → Read-only layer
+    • Your code → Read-only layer
+    • Running container → Writable layer on top
+Real-life analogy:
+Think of Google Docs’ “version history”:
+    • You have the base document (OS),
+    • Add comments or changes (app),
+    • But only your edits are new – rest is reused.
+You don’t rewrite the whole doc each time.
+In Docker:
+When you create a new container from an image, it reuses all the read-only layers and adds a small writable layer. Saves space and time.
+
+🔁 Combined Example: Running nginx in Docker
+    1. Namespaces:
+Your nginx container has its own:
+        ◦ Process IDs (can’t see host processes),
+        ◦ Network interface (has its own IP),
+        ◦ File system (isolated /etc, /var).
+    2. Cgroups:
+You limit nginx to:
+        ◦ 100MB RAM,
+        ◦ 10% CPU,
+So it doesn’t slow down the system.
+    3. UnionFS:
+Your nginx image uses:
+        ◦ A base Ubuntu layer,
+        ◦ An nginx install layer,
+        ◦ A config layer,
+        ◦ Then the container adds logs/configs in the writable layer.
+
+
+
+To be continued….
+
+
