@@ -1,0 +1,26 @@
+﻿      
+      Assignment 3
+      TASK 1 
+    1. Start on main, pull latest changes.
+    2. Create a new branch feature-test.
+    3. Make a simple change (like editing README.md).
+    4. Commit and push feature-test to remote.
+    5. Open a PR from feature-test to main.
+    6. While PR is open, make a change on local main, commit, and push it.
+    7. On feature-test, rebase on updated main.
+    8. Resolve any conflicts if they arise.
+    9. Push rebased feature-test (force push if needed).
+    10. Merge the PR on GitHub.
+       TASK2
+
+    • Initialize a new Git repository named git-rebase-practice.
+    • Create a file main.txt, add content, and make an initial commit on the main branch.
+    • Create a new branch called feature-rebase from main.
+    • On feature-rebase, make two separate commits modifying or adding feature.txt.
+    • Switch back to the main branch and make one more commit modifying main.txt.
+    • Rebase the feature-rebase branch onto the updated main branch.
+    • If there's a conflict during the rebase, resolve it, then continue the rebase.
+    • After a successful rebase, merge the feature-rebase branch into main.
+    • Use git log --oneline --graph --all to observe your branch history after rebasing.
+    • (Optional) Use git reflog to explore the state of the HEAD and recover history if needed.
+      

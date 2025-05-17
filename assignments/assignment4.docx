@@ -1,0 +1,21 @@
+﻿🧠 Real-World Assignment
+Create a YAML configuration file for a fictional startup’s DevOps environment. Example:
+💼 Project: devops-stack.yaml
+Create a YAML file that includes:
+    1. Company Info:
+        ◦ Name, founded year, founder.
+    2. Environments:
+        ◦ dev, staging, production.
+    3. Each environment should include:
+        ◦ List of microservices (e.g., auth, payments, dashboard).
+        ◦ Kubernetes replica counts.
+        ◦ Database config (name, type, user/pass).
+        ◦ CI/CD config (tool, branch to deploy from).
+        ◦ Alerts settings (on/off, Slack/email).
+    4. Use:
+        ◦ Anchors & aliases (for shared config)
+        ◦ Sets (unique alert channels)
+        ◦ Ordered maps (to show deployment steps)
+        ◦ Multiline string (for readme or description)
+        ◦ Timestamps
+
