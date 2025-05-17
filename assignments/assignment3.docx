@@ -25,15 +25,4 @@ Learnings Summary
     • Dealt with remote branch conflicts and learned to pull before pushing to avoid rejections.
 
        
-TASK2
 
-    1. • Initialize a new Git repository named git-rebase-practice.
-    2. • Create a file main.txt, add content, and make an initial commit on the main branch.
-    3. • Create a new branch called feature-rebase from main.
-    4. • On feature-rebase, make two separate commits modifying or adding feature.txt.
-    5. • Switch back to the main branch and make one more commit modifying main.txt.
-    6. • Rebase the feature-rebase branch onto the updated main branch.
-    7. • If there's a conflict during the rebase, resolve it, then continue the rebase.
-    8. • After a successful rebase, merge the feature-rebase branch into main.
-    9. • Use git log --oneline --graph --all to observe your branch history after rebasing.
-    10. • (Optional) Use git reflog to explore the state of the HEAD and recover history if needed.

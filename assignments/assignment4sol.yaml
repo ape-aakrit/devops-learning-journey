@@ -1,0 +1,90 @@
+# devops-stack.yaml
+
+company:
+  name: Fc Barcelona
+  founded: 1899
+  founder: "Aakrit"
+
+shared: &shared_settings
+  microservices:
+    - auth
+    - payments
+    - dashboard
+  replicas:
+    auth: 2
+    payments: 2
+    dashboard: 1
+  database: &default_db
+    name: app_db
+    type: postgres
+    user: admin
+    password: securepass123
+  cicd:
+    tool: GitHub Actions
+    branch: main
+  alerts:
+    enabled: true
+    channels: !!set
+      ? slack
+      ? email
+
+environments:
+  dev:
+    <<: *shared_settings
+    replicas:
+      auth: 1
+      payments: 1
+      dashboard: 1
+    cicd:
+      tool: GitHub Actions
+      branch: dev
+    alerts:
+      enabled: false
+      channels: !!set
+        ? slack
+
+  staging:
+    <<: *shared_settings
+    database:
+      <<: *default_db
+      name: staging_db
+    cicd:
+      tool: GitHub Actions
+      branch: staging
+    alerts:
+      enabled: true
+      channels: !!set
+        ? email
+
+  production:
+    <<: *shared_settings
+    database:
+      <<: *default_db
+      name: prod_db
+    replicas:
+      auth: 3
+      payments: 3
+      dashboard: 2
+    cicd:
+      tool: GitHub Actions
+      branch: main
+    alerts:
+      enabled: true
+      channels: !!set
+        ? slack
+        ? email
+
+deployment_steps: !!omap
+  - pull-latest-code: "Pull code from selected branch"
+  - run-tests: "Execute unit and integration tests"
+  - build-image: "Build Docker image for each service"
+  - push-image: "Push image to container registry"
+  - deploy-to-cluster: "Apply Kubernetes manifests"
+
+readme: >
+  Welcome to the Fc Barcelona  DevOps stack.
+  This configuration is designed to be clean, maintainable,
+  and scalable for all environments.
+  Please ensure secrets are managed securely using a vault or Kubernetes secrets.
+
+
