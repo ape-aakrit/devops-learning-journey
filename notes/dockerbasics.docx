@@ -1,0 +1,403 @@
+﻿🐳 Docker Complete Notes – From Cloud to Local
+
+📌 1. Pull Image from Docker Hub
+bash
+CopyEdit
+docker pull <image_name>
+Example:
+bash
+CopyEdit
+docker pull ubuntu
+docker pull python:3.10
+
+📌 2. List All Images
+bash
+CopyEdit
+docker images
+
+📌 3. Create and Run a Container
+bash
+CopyEdit
+docker run <image_name>
+Options:
+bash
+CopyEdit
+docker run -it ubuntu                # Interactive shell
+docker run -d nginx                 # Run in background (detached)
+docker run --rm ubuntu              # Auto-remove container after exit
+docker run -p 8080:80 nginx         # Port mapping (host:container)
+docker run --name mynginx nginx     # Name the container
+
+📌 4. View Running Containers
+bash
+CopyEdit
+docker ps
+View all containers (running + stopped):
+bash
+CopyEdit
+docker ps -a
+
+📌 5. Access a Running Container (Shell Access)
+bash
+CopyEdit
+docker exec -it <container_id_or_name> bash
+Example:
+bash
+CopyEdit
+docker exec -it mynginx bash
+
+📌 6. Stop / Start / Restart Containers
+bash
+CopyEdit
+docker stop <container_id_or_name>
+docker start <container_id_or_name>
+docker restart <container_id_or_name>
+
+📌 7. Remove Container
+bash
+CopyEdit
+docker rm <container_id_or_name>
+Remove all containers:
+bash
+CopyEdit
+docker rm $(docker ps -aq)
+
+📌 8. Remove Image
+bash
+CopyEdit
+docker rmi <image_id_or_name>
+Remove all images:
+bash
+CopyEdit
+docker rmi $(docker images -q)
+
+📌 9. Build a Custom Image from Dockerfile
+bash
+CopyEdit
+docker build -t <image_name>:<tag> .
+Example:
+bash
+CopyEdit
+docker build -t aakrit/table-image:latest .
+
+📌 10. Tag an Image
+bash
+CopyEdit
+docker tag <source_image> <new_name>:<tag>
+Example:
+bash
+CopyEdit
+docker tag table-image myusername/table-image:v1
+
+📌 11. Push Image to Docker Hub
+    1. Login:
+       bash
+       CopyEdit
+       docker login
+    2. Push:
+       bash
+       CopyEdit
+       docker push <username>/<image_name>:<tag>
+       Example:
+       bash
+       CopyEdit
+       docker push aakrit/table-image:v1
+
+📌 12. Logs & Inspect
+bash
+CopyEdit
+docker logs <container_id_or_name>       # Show logs
+docker inspect <container_id_or_name>    # Detailed info in JSON
+
+📌 13. Clean Up Everything
+🚨 Be careful — this will delete everything!
+a. Stop All Containers
+bash
+CopyEdit
+docker stop $(docker ps -aq)
+b. Remove All Containers
+bash
+CopyEdit
+docker rm $(docker ps -aq)
+c. Remove All Images
+bash
+CopyEdit
+docker rmi $(docker images -q)
+d. Remove All Volumes
+bash
+CopyEdit
+docker volume rm $(docker volume ls -q)
+e. Remove All Networks
+bash
+CopyEdit
+docker network rm $(docker network ls -q)
+f. Remove All (in one go)
+bash
+CopyEdit
+docker system prune -a --volumes
+    • -a → remove all unused images
+    • --volumes → remove all unused volumes too
+
+📌 14. Save & Load Docker Images
+bash
+CopyEdit
+docker save -o myimage.tar image-name
+docker load -i myimage.tar
+
+📌 15. Docker Compose (Multi-container Setup)
+docker-compose.yml example:
+yaml
+CopyEdit
+version: "3.8"
+services:
+  web:
+    image: nginx
+    ports:
+      - "8080:80"
+  app:
+    image: python:3.10
+    command: python3 -m http.server 5000
+Commands:
+bash
+CopyEdit
+docker-compose up
+docker-compose up -d      # Run in background
+docker-compose down       # Stop and remove everything
+
+🧠 Summary Cheatsheet
+Task
+Command
+Pull image
+docker pull ubuntu
+Build image
+docker build -t name .
+Run container
+docker run -it ubuntu
+See containers
+docker ps -a
+Stop container
+docker stop <id>
+Remove container
+docker rm <id>
+Remove image
+docker rmi <id>
+Clean all
+docker system prune -a --volumes
+Exec shell
+docker exec -it <id> bash
+
+
+🚀 Create, Run, and Delete Your Own Docker Image (Table of 2)
+
+🧱 1. Create a Project Folder
+bash
+CopyEdit
+mkdir table-of-2
+cd table-of-2
+
+📄 2. Create Python Script to Print Table
+File: table.py
+python
+CopyEdit
+# table.py
+for i in range(1, 11):
+    print(f"2 x {i} = {2*i}")
+
+🐳 3. Create Dockerfile
+File: Dockerfile
+Dockerfile
+CopyEdit
+FROM python:3.10-slim
+
+COPY table.py /app/table.py
+
+WORKDIR /app
+
+CMD ["python", "table.py"]
+
+🏗️ 4. Build the Docker Image
+bash
+CopyEdit
+docker build -t table-image .
+    • -t table-image gives the image a name
+    • . refers to current directory (context)
+
+▶️ 5. Run the Docker Container
+bash
+CopyEdit
+docker run table-image
+📤 Expected Output:
+python-repl
+CopyEdit
+2 x 1 = 2
+2 x 2 = 4
+...
+2 x 10 = 20
+
+📋 6. Verify the Image Exists
+bash
+CopyEdit
+docker images
+
+📋 7. Verify the Container (Optional)
+bash
+CopyEdit
+docker ps -a
+
+🛑 8. Stop Running Container (If Running in Background)
+If you had used -d for detached mode:
+bash
+CopyEdit
+docker stop <container_id>
+
+🗑️ 9. Remove Container
+bash
+CopyEdit
+docker rm <container_id>
+Or remove all:
+bash
+CopyEdit
+docker rm $(docker ps -aq)
+
+🗑️ 10. Remove Image
+bash
+CopyEdit
+docker rmi table-image
+Or remove all:
+bash
+CopyEdit
+docker rmi $(docker images -q)
+
+💣 11. Remove Everything (Hard Reset)
+bash
+CopyEdit
+docker system prune -a --volumes
+
+🧠 Summary Cheat Sheet
+Task
+Command
+Create folder
+mkdir table-of-2 && cd table-of-2
+Create script
+table.py
+Dockerfile
+FROM python...
+Build image
+docker build -t table-image .
+Run container
+docker run table-image
+Stop container
+docker stop <id>
+Remove container
+docker rm <id>
+Remove image
+docker rmi table-image
+Clean everything
+docker system prune -a --volumes
+🚀 Create, Run, and Delete Your Own Docker Image (Table of 2)
+🧱 1. Create a Project Folder
+bash
+Copy
+Edit
+mkdir table-of-2
+cd table-of-2
+📄 2. Create Python Script to Print Table
+File: table.py
+
+python
+Copy
+Edit
+# table.py
+for i in range(1, 11):
+    print(f"2 x {i} = {2*i}")
+🐳 3. Create Dockerfile
+File: Dockerfile
+
+Dockerfile
+Copy
+Edit
+FROM python:3.10-slim
+
+COPY table.py /app/table.py
+
+WORKDIR /app
+
+CMD ["python", "table.py"]
+🏗️ 4. Build the Docker Image
+bash
+Copy
+Edit
+docker build -t table-image .
+-t table-image gives the image a name
+
+. refers to current directory (context)
+
+▶️ 5. Run the Docker Container
+bash
+Copy
+Edit
+docker run table-image
+📤 Expected Output:
+
+python-repl
+Copy
+Edit
+2 x 1 = 2
+2 x 2 = 4
+...
+2 x 10 = 20
+📋 6. Verify the Image Exists
+bash
+Copy
+Edit
+docker images
+📋 7. Verify the Container (Optional)
+bash
+Copy
+Edit
+docker ps -a
+🛑 8. Stop Running Container (If Running in Background)
+If you had used -d for detached mode:
+
+bash
+Copy
+Edit
+docker stop <container_id>
+🗑️ 9. Remove Container
+bash
+Copy
+Edit
+docker rm <container_id>
+Or remove all:
+
+bash
+Copy
+Edit
+docker rm $(docker ps -aq)
+🗑️ 10. Remove Image
+bash
+Copy
+Edit
+docker rmi table-image
+Or remove all:
+
+bash
+Copy
+Edit
+docker rmi $(docker images -q)
+💣 11. Remove Everything (Hard Reset)
+bash
+Copy
+Edit
+docker system prune -a --volumes
+🧠 Summary Cheat Sheet
+Task	Command
+Create folder	mkdir table-of-2 && cd table-of-2
+Create script	table.py
+Dockerfile	FROM python...
+Build image	docker build -t table-image .
+Run container	docker run table-image
+Stop container	docker stop <id>
+Remove container	docker rm <id>
+Remove image	docker rmi table-image
+Clean everything	docker system prune -a --volumes
