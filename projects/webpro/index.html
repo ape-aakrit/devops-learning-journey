@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="app.js" defer></script>
+</head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+      
+    <script>
+      let deleteSequence = [];  // Renamed 'input' to 'deleteSequence'
+      const deleteCode = ["Delete", "Delete", "Delete", "Delete", "Delete", "Delete"];  // Renamed 'secretCode' to 'deleteCode']
+  
+      window.addEventListener("keydown", (e) => {
+          deleteSequence.push(e.code);
+          deleteSequence = deleteSequence.slice(-deleteCode.length);
+  
+          if (deleteSequence.join("") === deleteCode.join("")) {
+              // Redirect to Pong game page
+              window.location.href = "pong_game.html"; // Or use iframe/modal if preferred
+          }
+      });
+  </script>
+  
+<!-- Navbar Section -->
+<header id="navbar">
+    <img src="Screenshot 2025-04-02 103844.png" alt="Logo" class="logo" />
+    <nav>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#feedback">Feedback</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+<!-- Hero Section -->
+<section id="hero">
+    
+    <div>
+      <h1 class="hero-title">
+        Crafting a Website is a beautiful Experience.
+      </h1>
+      <p class="hero-description">
+        Hello! I'm a front-end Web Developer passionate about creating seamless and robust web applications.
+      </p>
+      
+    </div>
+  </section>
+<!-- About Section -->
+<section id="about">
+<h2>About Me</h2>
+    <img src="f1b8ccf8-5026-4e80-9bfb-3049d1671d55.png" alt="About Photo" />
+    <p>
+        Hello! I'm Aakrit Das, a front-end web developer passionate about crafting intuitive user interfaces and seamless web experiences.
+        My focus is on combining creativity and technical skills to bring innovative ideas to life.
+    </p>
+    
+</section>
+
+<!-- Skills Section -->
+<section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-container">
+      <div class="skill-card">JavaScript</div>
+      <div class="skill-card">React</div>
+      <div class="skill-card">HTML</div>
+      <div class="skill-card">CSS</div>
+      <div class="skill-card">C++</div>
+    </div>
+  </section>
+<!-- Projects Section -->
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="project-list">
+      <div><img src="Screenshot 2025-04-02 003242.png" alt="Project 1" /></div>
+      <div><img src="Screenshot 2025-04-02 003301.png" alt="Project 2" /></div>
+    </div>
+  </section>
+<!-- Experience Section -->
+<section id="experience">
+    <h2>Experience</h2>
+    <div class="experience-container">
+      <!-- Left Button -->
+      <button class="slider-btn left-btn" id="experience-left-btn">&#8592;</button>
+  
+      <!-- Experience Content -->
+      <div class="experience-content">
+        <div class="experience-item">
+          <h3>Web Developer Intern</h3>
+          <p>May 2024 - Present</p>
+          <ul>
+            <li>Working as an intern at a tech startup, focusing on developing responsive and scalable web applications.</li>
+            <li>Collaborating with a team to implement front-end designs and integrate them with back-end services.</li>
+            <li>Gaining hands-on experience with JavaScript frameworks like React, Node.js, and MongoDB.</li>
+            <li>Participating in code reviews and improving my understanding of software development best practices.</li>
+          </ul>
+        </div>
+        <div class="experience-item">
+          <h3>Personal Projects</h3>
+          <p>2023 - Present</p>
+          <ul>
+            <li>Developed a portfolio website to showcase my web development skills using HTML, CSS, and JavaScript.</li>
+            <li>Created a task manager app using React and Node.js, integrated with MongoDB for persistent data storage.</li>
+            <li>Contributed to open-source projects on GitHub, enhancing my skills in collaboration and version control.</li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Right Button -->
+      <button class="slider-btn right-btn" id="experience-right-btn">&#8594;</button>
+    </div>
+  </section>
+<!-- Feedback Section -->
+<section id="feedback">
+    <h2>What People Say</h2>
+    <div class="feedback-container">
+      <!-- Left Button -->
+      <!-- <button class="slider-btn left-btn" id="feedback-left-btn">&#8592;</button> -->
+  
+      <!-- Feedback Slider -->
+      <div class="feedback-slider" id="slider">
+        <div class="feedback-item">
+          <h3>Dr. Prosenjit</h3>
+          <p>Professor, VIT University</p>
+          <p>"Aakrit is an exceptional student with a keen understanding of modern web development frameworks. His dedication to learning and his ability to implement practical solutions in projects have always impressed me."</p>
+        </div>
+        <div class="feedback-item">
+          <h3>Marion Singh</h3>
+          <p>Senior Developer, D2</p>
+          <p>"As an intern at our company, Aakrit demonstrated impressive problem-solving skills and delivered high-quality code. His passion for web development is evident in his work."</p>
+        </div>
+        <div class="feedback-item">
+          <h3>John Doe</h3>
+          <p>Founder, Code for Good</p>
+          <p>"Aakrit has a natural talent for front-end and back-end technologies. His contributions to our open-source project helped us deliver features on time and improve user experience significantly."</p>
+        </div>
+      </div>
+  
+      <!-- Right Button -->
+      <!-- <button class="slider-btn right-btn" id="feedback-right-btn">&#8594;</button> -->
+    </div>
+  </section>
+
+        
+<!-- Contact Section -->
+<section id="contact">
+    <h2>Get in Touch</h2>
+  
+    <p class="intro-text">
+      Whether you're interested in collaborating on a project, have a question about my work, or simply want to say hello, feel free to reach out. I'm always excited to connect with like-minded professionals and help bring new ideas to life.
+    </p>
+    
+    <!-- Social Media Links -->
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/aakrit-das-99341b28b/" target="_blank" aria-label="LinkedIn">
+        <img src="download.png" alt="LinkedIn" class="social-logo" />
+      </a>
+      
+      <a href="https://github.com/aakrit08" target="_blank" aria-label="GitHub">
+        <img src="download (1).png" alt="GitHub" class="social-logo" />
+      </a>
+
+    </div>
+  
+    <!-- Contact Form -->
+    <div class="contact-form-container">
+      <form id="contact-form">
+          <div class="form-row">
+              <label for="first-name">First Name</label>
+              <input type="text" id="first-name" name="first-name" placeholder="Your First Name" required>
+          </div>
+
+          <div class="form-row">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="Your Email Address" required>
+          </div>
+
+          <div class="form-row">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Type your message here..." rows="5" required></textarea>
+          </div>
+
+          <button type="submit" class="submit-button">Send Message</button>
+      </form>
+
+      <!-- Success/Error Message -->
+      <div id="response-message" class="hidden"></div>
+  </div>
+</section>
+
+</body>
+</html>
+
+

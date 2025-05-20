@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pong Game - Easter Egg</title>
+  <style>
+    body {
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    canvas {
+      background-color: #222;
+      border: 2px solid #fff;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="pong" width="600" height="400"></canvas>
+
+  <script>
+    const canvas = document.getElementById('pong');
+    const context = canvas.getContext('2d');
+    
+    const paddleWidth = 10, paddleHeight = 100, ballRadius = 10;
+    let paddle1Y = canvas.height / 2 - paddleHeight / 2, paddle2Y = canvas.height / 2 - paddleHeight / 2;
+    let ballX = canvas.width / 2, ballY = canvas.height / 2, ballSpeedX = 5, ballSpeedY = 3;
+    let paddle1Speed = 0, paddle2Speed = 0;
+    
+    function draw() {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.fillStyle = "#FFF";
+      context.fillRect(0, paddle1Y, paddleWidth, paddleHeight);
+      context.fillRect(canvas.width - paddleWidth, paddle2Y, paddleWidth, paddleHeight);
+      context.beginPath();
+      context.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
+      context.fillStyle = "#FFF";
+      context.fill();
+      context.closePath();
+
+      paddle1Y += paddle1Speed;
+      paddle2Y += paddle2Speed;
+
+      if (paddle1Y < 0) paddle1Y = 0;
+      if (paddle1Y + paddleHeight > canvas.height) paddle1Y = canvas.height - paddleHeight;
+      if (paddle2Y < 0) paddle2Y = 0;
+      if (paddle2Y + paddleHeight > canvas.height) paddle2Y = canvas.height - paddleHeight;
+
+      ballX += ballSpeedX;
+      ballY += ballSpeedY;
+
+      if (ballY - ballRadius < 0 || ballY + ballRadius > canvas.height) ballSpeedY = -ballSpeedY;
+
+      if (ballX - ballRadius < paddleWidth && ballY > paddle1Y && ballY < paddle1Y + paddleHeight) ballSpeedX = -ballSpeedX;
+      if (ballX + ballRadius > canvas.width - paddleWidth && ballY > paddle2Y && ballY < paddle2Y + paddleHeight) ballSpeedX = -ballSpeedX;
+
+      if (ballX - ballRadius < 0 || ballX + ballRadius > canvas.width) {
+        ballX = canvas.width / 2;
+        ballY = canvas.height / 2;
+        ballSpeedX = -ballSpeedX;
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === 'ArrowUp') paddle2Speed = -5;
+      if (e.key === 'ArrowDown') paddle2Speed = 5;
+      if (e.key === 'w') paddle1Speed = -5;
+      if (e.key === 's') paddle1Speed = 5;
+    });
+
+    document.addEventListener("keyup", (e) => {
+      if (e.key === 'ArrowUp' || e.key === 'ArrowDown') paddle2Speed = 0;
+      if (e.key === 'w' || e.key === 's') paddle1Speed = 0;
+    });
+
+    draw();
+  </script>
+</body>
+</html>
