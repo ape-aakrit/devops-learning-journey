@@ -11,7 +11,6 @@ This project is a simple static website (HTML, CSS, and images) that is containe
 - Preparing and organizing a personal/local project in a production-like format.
 - Optional: Docker image tagging and pushing to Docker Hub (if needed).
 
----
 
 ## 🛠️ How to Run Locally
 
@@ -20,11 +19,11 @@ Make sure Docker is installed on your system.
 ### 1. Build the Docker image:
 
 docker build -t my-static-website .
-2. Run the container:
 
-Edit
+### 2. Run the container:
+
 docker run -d -p 8080:80 my-static-website
-3. Open in your browser:
+### 3. Open in your browser:
 
 http://localhost:8080
 Your static site will be live!
