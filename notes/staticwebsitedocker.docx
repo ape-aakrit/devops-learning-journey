@@ -1,0 +1,98 @@
+﻿📘 Dockerized Static Website – Step-by-Step Log
+✅ Goal:
+To containerize a static website (HTML, CSS, and images) using Docker and serve it with NGINX on localhost.
+
+🧩 Step 1: Project Setup
+    • Created a static website with the following structure:
+      pgsql
+      CopyEdit
+      .
+      ├── index.html
+      ├── styles.css
+      ├── images/
+    • This was the base content to be served by a web server.
+
+🐳 Step 2: Wrote the Dockerfile
+Created a Dockerfile to serve the site using the NGINX image:
+dockerfile
+CopyEdit
+# Use the official NGINX base image
+FROM nginx:alpine
+
+# Remove default nginx files
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy all site files to nginx's public directory
+COPY . /usr/share/nginx/html
+
+# Expose port 80
+EXPOSE 80
+
+# Run nginx in foreground
+CMD ["nginx", "-g", "daemon off;"]
+
+🚫 Step 3: Created .dockerignore
+    • Added a .dockerignore file to prevent unnecessary files from being copied into the Docker image (e.g., .git, README.md, local config, etc.).
+Example:
+CopyEdit
+.git
+README.md
+*.md
+Dockerfile
+
+🔨 Step 4: Built the Docker Image
+bash
+CopyEdit
+docker build -t my-static-website .
+    • Successfully built the image named my-static-website.
+
+🧪 Step 5: Ran the Docker Container Locally
+bash
+CopyEdit
+docker run -d -p 8080:80 my-static-website
+    • The site was successfully running on:
+👉 http://localhost:8080
+
+🌐 Step 6: Tried Docker Hub Push (Optional)
+    1. Tagged the image:
+       bash
+       CopyEdit
+       docker tag my-static-website yourdockerhubusername/my-static-website:latest
+    2. Logged in:
+       bash
+       CopyEdit
+       docker login
+    3. Tried pushing:
+       bash
+       CopyEdit
+       docker push yourdockerhubusername/my-static-website:latest
+⚠️ Push failed due to either missing repo or permission issues, but later realized:
+🚫 Uploading to Docker Hub wasn't needed since this was a personal/local project.
+
+📂 Step 7: Uploaded Project to GitHub
+    • Initialized a Git repository:
+      bash
+      CopyEdit
+      git init
+      git add .
+      git commit -m "Initial Dockerized static website"
+    • Created a new GitHub repo and pushed:
+      bash
+      CopyEdit
+      git remote add origin <your-repo-url>
+      git push -u origin main
+
+📝 Step 8: Created README.md
+    • Documented everything done, including:
+        ◦ Project summary
+        ◦ How to build/run
+        ◦ Dockerfile explanation
+        ◦ Optional Docker Hub instructions
+        ◦ License and author info
+
+🧠 Summary
+You now have:
+    • A working, Dockerized static website with NGINX.
+    • Full GitHub project with source code and documentation.
+    • A clear understanding of building, running, and (optionally) publishing Docker images.
+
