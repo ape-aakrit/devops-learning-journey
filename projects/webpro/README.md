@@ -20,11 +20,11 @@ Make sure Docker is installed on your system.
 ### 1. Build the Docker image:
 
 docker build -t my-static-website .
-2. Run the container:
 
-Edit
+###2. Run the container:
+
 docker run -d -p 8080:80 my-static-website
-3. Open in your browser:
+###3. Open in your browser:
 
 http://localhost:8080
 Your static site will be live!
