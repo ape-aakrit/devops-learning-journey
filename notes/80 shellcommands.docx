@@ -1,0 +1,94 @@
+﻿📁 File and Directory Management
+    1. ls – List directory contents
+    2. cd – Change directory
+    3. pwd – Show current directory
+    4. mkdir – Create a new directory
+    5. rmdir – Remove empty directory
+    6. rm – Remove files/directories
+    7. cp – Copy files/directories
+    8. mv – Move/rename files
+    9. touch – Create a new empty file
+    10. stat – Show file info
+    11. file – Determine file type
+    12. basename – Strip directory and suffix
+    13. dirname – Extract directory path
+    14. tree – Show directory tree structure
+    15. find – Search files in directory tree
+    16. locate – Find files using database
+    17. updatedb – Update locate DB
+    18. realpath – Show absolute path
+    19. lsblk – List block devices
+    20. mount / umount – Mount/unmount devices
+
+🔍 Search and Text Processing
+    21. grep – Search inside files
+    22. egrep – Extended grep (regex)
+    23. fgrep – Fixed string grep
+    24. sed – Stream editor (replace/edit text)
+    25. awk – Pattern scanning and processing
+    26. cut – Remove sections from lines
+    27. sort – Sort lines
+    28. uniq – Remove duplicates
+    29. tr – Translate characters
+    30. wc – Word/line/byte count
+    31. head – First N lines
+    32. tail – Last N lines
+    33. diff – Compare files line-by-line
+    34. cmp – Compare files byte-by-byte
+    35. xargs – Build argument list from input
+    36. strings – Print readable strings from binaries
+    37. nl – Number lines
+    38. tee – Read and write simultaneously
+
+📦 Permissions and Ownership
+    39. chmod – Change file permissions
+    40. chown – Change file owner/group
+    41. chgrp – Change group
+    42. umask – Set default permissions
+    43. ls -l – View file permissions
+    44. getfacl / setfacl – Get/set ACLs
+
+🖥️ Process Management
+    45. ps – View running processes
+    46. top / htop – Real-time process monitor
+    47. kill – Kill process by PID
+    48. killall – Kill by name
+    49. nice / renice – Set process priority
+    50. jobs – Show background jobs
+    51. fg / bg – Foreground/background jobs
+    52. & – Run command in background
+    53. nohup – Run ignoring hangups
+
+🧠 System Information
+    54. uname -a – Kernel/system info
+    55. uptime – How long the system has been running
+    56. hostname – System hostname
+    57. df -h – Disk space
+    58. du -sh – Directory size
+    59. free -h – RAM usage
+    60. vmstat – Memory and CPU info
+    61. iostat – I/O stats
+    62. lscpu – CPU architecture
+    63. lsmem – Memory info
+    64. whoami – Current user
+    65. id – UID, GID
+    66. groups – Group memberships
+
+🌐 Networking
+    67. ping – Test connectivity
+    68. curl – HTTP client
+    69. wget – Download from web
+    70. netstat / ss – Network stats
+    71. ip a / ifconfig – Network interfaces
+    72. ip r / route – Routing table
+    73. nslookup / dig – DNS lookup
+    74. traceroute – Trace network path
+    75. nmap – Network scan
+    76. scp – Secure file copy
+    77. rsync – File sync (over SSH too)
+
+📚 Other Essentials
+    78. history – Show command history
+    79. alias / unalias – Create/remove command shortcuts
+    80. man / --help – Read manual/help for commands
+
