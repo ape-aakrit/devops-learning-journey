@@ -8,7 +8,8 @@ WORKDIR /app
 COPY package*.json ./
 
 # Optional build tools
-RUN apk add --no-cache python3 make g++
+RUN apk update && apk add --no-cache python3 make g++
+
 
 # Use cache for npm
 RUN --mount=type=cache,target=/root/.npm \
